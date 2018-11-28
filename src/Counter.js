@@ -11,7 +11,29 @@ class Counter extends React.Component {
     }
     decCounter = () => {
         this.setState({ counterValue: this.state.counterValue - 1 })
+    }
 
+    saveToFirebase = () => {
+        fetch(`https://test-backend-98861.firebaseio.com/counter.json`, {
+            method: 'PUT',
+            body: JSON.stringify(this.state.counterValue)
+        })
+        // .then(response => response.json())
+        // .then(data => console.log(data))
+    }
+
+    loadFromFirebase = () => {
+        fetch(`https://test-backend-98861.firebaseio.com/counter.json`)
+            .then(response => response.json())
+            .then(data => this.setState({ counterValue: data }))
+    }
+
+    componentDidUpdate() {
+        this.saveToFirebase()
+    }
+
+    componentDidMount() {
+        this.loadFromFirebase()
     }
 
     render() {
