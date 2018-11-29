@@ -14,8 +14,7 @@ const MessagesList = (props) => (
                     primaryText={message.text}
                     secondaryText={
                         `${moment(message.timestamp).format('DD-MM-YYYY hh:mm')}
-                        ${message.author || message.author.email}
-                        `
+                        ${message.author.displayName || message.author.email}`
                     }
                     key={message.key}
                     rightIconButton={
