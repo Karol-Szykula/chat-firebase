@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 
-import Counter from './Counter'
+import Chat from './Chat/Chat'
+import Auth from './Auth/Auth.js'
 
 class App extends Component {
   render() {
     return (
       <div >
-        <Counter />
+        <Auth >
+          <Chat />
+        </Auth>
       </div>
     )
   }
